@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-    <artifactId>java-fx</artifactId>
-    <groupId>com.emont01.javafx</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>java-fx</artifactId>
+        <groupId>com.emont01.javafx</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <artifactId>hello-world</artifactId>
-   
-	<name>hello-world</name>
+
+    <name>hello-world</name>
     <packaging>jar</packaging>
-    
+
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
         <name>Eivar Montenegro</name>
@@ -29,29 +30,37 @@
         <finalName>hello-world</finalName>
 
         <plugins>
-
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>8.1.5</version>
                 <configuration>
-
-                    <mainClass>com.emont01.MainApp</mainClass>
+                    <mainClass>com.emont01.HelloWorld</mainClass>
 
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
                     <keyStorePassword>example-password</keyStorePassword>
                     <allPermissions>true</allPermissions>
-
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>create-jfxjar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
 
     <dependencies>
-    
+
         <!-- MigLayout -->
 
         <dependency>
