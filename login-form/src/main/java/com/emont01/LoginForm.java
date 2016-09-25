@@ -31,8 +31,9 @@ public class LoginForm extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
         // Login form elements
         Text sceneTitle = new Text("Welcome");
-        sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        sceneTitle.setId("welcome-text");
         grid.add(sceneTitle, 0, 0, 2, 1);
+        actionTarget.setId("action-target");
 
         Label label = new Label("User name:");
         grid.add(label, 0, 1);
@@ -40,8 +41,8 @@ public class LoginForm extends Application {
         TextField userTextField = new TextField();
         grid.add(userTextField, 1, 1);
 
-        Label passwd = new Label("Password:");
-        grid.add(passwd, 0, 2);
+        Label passwordLabel = new Label("Password:");
+        grid.add(passwordLabel, 0, 2);
 
         PasswordField passwordField = new PasswordField();
         grid.add(passwordField, 1, 2);
@@ -73,7 +74,6 @@ public class LoginForm extends Application {
     }
 
     private void handleLogin() {
-        actionTarget.setFill(Color.FIREBRICK);
         actionTarget.setText("Sign in button pressed!");
     }
 
