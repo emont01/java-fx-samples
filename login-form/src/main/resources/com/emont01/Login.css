@@ -1,4 +1,5 @@
 .root {
+    -fx-background-color: #818181;
     -fx-background-image: url("background.jpg");
 }
 

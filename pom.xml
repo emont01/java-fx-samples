@@ -8,7 +8,8 @@
     <name>Java FX tests</name>
     <modules>
         <module>hello-world</module>
-    <module>login-form</module>
+        <module>login-form</module>
+    <module>fxml-example</module>
   </modules>
 
     <properties>

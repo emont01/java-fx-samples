@@ -1,16 +1,17 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>com.emont01.javafx</groupId>
         <artifactId>java-fx</artifactId>
+        <groupId>com.emont01.javafx</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>login-form</artifactId>
+    <artifactId>fxml-example</artifactId>
 
-    <name>login-form</name>
+    <name>fxml-example</name>
     <packaging>jar</packaging>
 
     <organization>
@@ -20,34 +21,26 @@
 
     <build>
 
-        <finalName>login-form</finalName>
+        <finalName>fxml-example</finalName>
 
         <plugins>
+
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
+                <version>8.1.5</version>
                 <configuration>
-                    <mainClass>com.emont01.HelloWorld</mainClass>
+
+                    <mainClass>com.emont01.MainApp</mainClass>
 
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
                     <keyStorePassword>example-password</keyStorePassword>
                     <allPermissions>true</allPermissions>
+
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>create-jfxjar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
+
         </plugins>
     </build>
 
@@ -93,4 +86,5 @@
         </dependency>
 
     </dependencies>
+
 </project>
