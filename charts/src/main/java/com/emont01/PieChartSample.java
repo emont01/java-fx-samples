@@ -3,6 +3,7 @@ package com.emont01;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Side;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.chart.*;
@@ -32,6 +33,8 @@ public class PieChartSample extends Application {
                 new PieChart.Data("Apples", 30));
         final PieChart chart = new PieChart(pieChartData);
         chart.setTitle("Imported Fruits");
+        chart.setLabelLineLength(10);
+        chart.setLegendSide(Side.LEFT);
 
         ((Group) scene.getRoot()).getChildren().add(chart);
         stage.setScene(scene);
