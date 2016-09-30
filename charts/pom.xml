@@ -1,18 +1,19 @@
-<?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>com.emont01.javafx</groupId>
-        <artifactId>java-fx</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <artifactId>login-form</artifactId>
+    <artifactId>java-fx</artifactId>
+    <groupId>com.emont01.javafx</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 
-    <name>login-form</name>
+    <artifactId>charts</artifactId>
+	
+	<name>charts</name>
     <packaging>jar</packaging>
-
+    
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
         <name>Eivar Montenegro</name>
@@ -20,19 +21,22 @@
 
     <build>
 
-        <finalName>login-form</finalName>
+        <finalName>charts</finalName>
 
         <plugins>
+
             <plugin>
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.emont01.HelloWorld</mainClass>
+
+                    <mainClass>com.emont01.MainApp</mainClass>
 
                     <!-- only required if signing the jar file -->
                     <keyStoreAlias>example-user</keyStoreAlias>
                     <keyStorePassword>example-password</keyStorePassword>
                     <allPermissions>true</allPermissions>
+
                 </configuration>
                 <executions>
                     <execution>
@@ -48,15 +52,30 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.emont01.MainApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
-    <dependencies>
 
+    <dependencies>
+    
         <!-- MigLayout -->
 
         <dependency>
@@ -97,4 +116,5 @@
         </dependency>
 
     </dependencies>
+
 </project>

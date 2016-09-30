@@ -24,6 +24,7 @@
 
 .main-panel {
     -fx-background-image: url("../images/background.jpg");
+    -fx-background-color: #818181;
 }
 
 .hello-message {

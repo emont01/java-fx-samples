@@ -8,10 +8,11 @@
         <artifactId>java-fx</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>login-form</artifactId>
+    <artifactId>animation</artifactId>
 
-    <name>login-form</name>
+    <name>animation</name>
     <packaging>jar</packaging>
+    <url>http://maven.apache.org</url>
 
     <organization>
         <!-- Used as the 'Vendor' for JNLP generation -->
@@ -20,7 +21,7 @@
 
     <build>
 
-        <finalName>login-form</finalName>
+        <finalName>jfx-animation</finalName>
 
         <plugins>
             <plugin>
@@ -44,13 +45,28 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.emont01.ColorfulCircles</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -97,4 +113,5 @@
         </dependency>
 
     </dependencies>
+
 </project>

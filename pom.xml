@@ -9,7 +9,9 @@
     <modules>
         <module>hello-world</module>
         <module>login-form</module>
-    <module>fxml-example</module>
+        <module>fxml-example</module>
+        <module>animation</module>
+    <module>charts</module>
   </modules>
 
     <properties>
@@ -21,11 +23,14 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!-- maven JavaFX plugin -->
                 <plugin>
                     <groupId>com.zenjava</groupId>
                     <artifactId>javafx-maven-plugin</artifactId>
                     <version>8.6.0</version>
                 </plugin>
+
+                <!-- maven compiler plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -34,6 +39,31 @@
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
+                </plugin>
+
+                <!-- maven jar plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+
+                <!-- maven dependency plugin -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.10</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>copy-dependencies</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
