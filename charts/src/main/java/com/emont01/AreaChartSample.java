@@ -17,7 +17,7 @@ public class AreaChartSample extends Application {
     @Override public void start(Stage stage) {
         stage.setTitle("Area Chart Sample");
         final NumberAxis xAxis = new NumberAxis(1, 31, 1);
-        final NumberAxis yAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis(-5, 27, 5);
         final AreaChart<Number,Number> ac =
             new AreaChart<Number,Number>(xAxis,yAxis);
         ac.setTitle("Temperature Monitoring (in Degrees C)");
@@ -50,8 +50,23 @@ public class AreaChartSample extends Application {
         seriesMay.getData().add(new XYChart.Data(27, 26));
         seriesMay.getData().add(new XYChart.Data(31, 26));
 
-        Scene scene  = new Scene(ac,800,600);
-        ac.getData().addAll(seriesApril, seriesMay);
+        XYChart.Series seriesMarch = new XYChart.Series();
+        seriesMarch.setName("March");
+        seriesMarch.getData().add(new XYChart.Data(0, -2));
+        seriesMarch.getData().add(new XYChart.Data(3, -4));
+        seriesMarch.getData().add(new XYChart.Data(6, 0));
+        seriesMarch.getData().add(new XYChart.Data(9, 5));
+        seriesMarch.getData().add(new XYChart.Data(12, -4));
+        seriesMarch.getData().add(new XYChart.Data(15, 6));
+        seriesMarch.getData().add(new XYChart.Data(18, 8));
+        seriesMarch.getData().add(new XYChart.Data(21, 14));
+        seriesMarch.getData().add(new XYChart.Data(24, 4));
+        seriesMarch.getData().add(new XYChart.Data(27, 6));
+        seriesMarch.getData().add(new XYChart.Data(31, 6));
+
+        Scene scene  = new Scene(ac, 800, 600);
+        scene.getStylesheets().add("styles/area_charts.css");
+        ac.getData().addAll(seriesApril, seriesMay, seriesMarch);
         stage.setScene(scene);
         stage.show();
     }
