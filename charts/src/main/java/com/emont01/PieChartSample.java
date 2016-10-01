@@ -3,8 +3,9 @@ package com.emont01;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Side;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.chart.*;
 import javafx.scene.Group;
@@ -19,7 +20,8 @@ public class PieChartSample extends Application {
 
     @Override
     public void start(Stage stage) {
-        Scene scene = new Scene(new Group());
+        Group root = new Group();
+        Scene scene = new Scene(root);
         stage.setTitle("Imported Fruits");
         stage.setWidth(500);
         stage.setHeight(500);
@@ -33,10 +35,27 @@ public class PieChartSample extends Application {
                 new PieChart.Data("Apples", 30));
         final PieChart chart = new PieChart(pieChartData);
         chart.setTitle("Imported Fruits");
-        chart.setLabelLineLength(10);
-        chart.setLegendSide(Side.LEFT);
+//        chart.setLabelLineLength(10);
+//        chart.setLegendSide(Side.LEFT);
 
-        ((Group) scene.getRoot()).getChildren().add(chart);
+        final Label caption = new Label("");
+        caption.setId("caption");
+
+        for (final PieChart.Data data : chart.getData()) {
+            data.getNode().addEventHandler(
+                MouseEvent.MOUSE_PRESSED,
+                e -> {
+                    caption.setTranslateX(e.getSceneX());
+                    caption.setTranslateY(e.getSceneY());
+                    caption.setText(String.valueOf(data.getPieValue()) + "%");
+                }
+            );
+        }
+
+        root.getChildren().add(chart);
+        root.getChildren().add(caption);
+
+        scene.getStylesheets().add("/styles/pie_charts.css");
         stage.setScene(scene);
         stage.show();
     }

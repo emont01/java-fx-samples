@@ -1,0 +1,26 @@
+.default-color0.chart-pie { -fx-pie-color: #36708A; }
+.default-color1.chart-pie { -fx-pie-color: #112B63; }
+.default-color2.chart-pie { -fx-pie-color: #113B63; }
+.default-color3.chart-pie { -fx-pie-color: #116320; }
+.default-color4.chart-pie { -fx-pie-color: #0B2B11; }
+
+.chart-pie-label-line {
+    -fx-stroke: #8b4513;
+    -fx-fill: #46240B;
+}
+
+.chart-pie-label {
+    -fx-fill: #46240B;
+    -fx-font-size: 1em;
+}
+.chart-legend {
+    -fx-background-color:  #fafad2;
+    -fx-stroke: #46240B;
+}
+
+#caption {
+    -fx-text-fill: #FA240B;
+    -fx-font: 20 arial;
+    -fx-background-color: #fafad2;
+    -fx-border-radius: 5px 20px 5px;
+}
