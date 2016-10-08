@@ -20,23 +20,23 @@ public class BubbleChartSample extends Application {
         final NumberAxis xAxis = new NumberAxis(1, 53, 4);
         final NumberAxis yAxis = new NumberAxis(0, 80, 10);
         final BubbleChart<Number, Number> bubbleChart = new BubbleChart<>(xAxis, yAxis);
-        yAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(yAxis,"$ ",null));
+        yAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(yAxis, "$ ", null));
         yAxis.setLabel("Product Budget");
         yAxis.setTickLabelGap(10);
         yAxis.setTickLabelFill(Color.CHOCOLATE);
 
         xAxis.setLabel("Week");
-        xAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(yAxis,"w",null));
+        xAxis.setTickLabelFormatter(new NumberAxis.DefaultFormatter(yAxis, "w", null));
         xAxis.setTickLabelGap(5);
         xAxis.setTickLabelFill(Color.DARKGREY);
 
         bubbleChart.setTitle("Budget Monitoring");
-        bubbleChart.setAlternativeColumnFillVisible(false);
-        bubbleChart.setAlternativeRowFillVisible(true);
+        bubbleChart.setAlternativeColumnFillVisible(true);
+        bubbleChart.setAlternativeRowFillVisible(false);
         bubbleChart.setVerticalGridLinesVisible(true);
-        bubbleChart.setVerticalZeroLineVisible(false);
-        bubbleChart.setHorizontalGridLinesVisible(false);
-        bubbleChart.setHorizontalZeroLineVisible(false);
+        bubbleChart.setVerticalZeroLineVisible(true);
+        bubbleChart.setHorizontalGridLinesVisible(true);
+        bubbleChart.setHorizontalZeroLineVisible(true);
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Product 1");
@@ -61,6 +61,7 @@ public class BubbleChartSample extends Application {
         series2.getData().add(new XYChart.Data(47, 23, 3.8));
 
         Scene scene = new Scene(bubbleChart);
+        scene.getStylesheets().add("styles/bubble_charts.css");
         bubbleChart.getData().addAll(series1, series2);
         stage.setScene(scene);
         stage.show();
