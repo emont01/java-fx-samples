@@ -1,3 +1,8 @@
+#status-label {
+    -fx-text-fill: #FA240B;
+    -fx-fill: white;
+}
+
 .chart-content {
     -fx-padding: 30px;
 }
@@ -27,12 +32,15 @@
 .chart-plot-background {
     -fx-background-color: #e2ecfe;
 }
+
 .chart-vertical-grid-lines {
     -fx-stroke: #3278fa;
 }
+
 .chart-horizontal-grid-lines {
     -fx-stroke: #3278fa;
 }
+
 .chart-alternative-row-fill {
     -fx-fill: #90bcfd;
     -fx-stroke: transparent;
