@@ -1,13 +1,11 @@
 package com.emont01;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
@@ -16,6 +14,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.util.Arrays;
 
 /**
  * Created by Eivar Montenegro on 10/08/16.
@@ -49,6 +49,11 @@ public class BarChartSample extends Application {
         hBarsButton.setText("Horizontal Bars Chart");
         buttonsPane.add(hBarsButton, 1, 0);
 
+        // Stacked bars chart
+        Button sBarsButton = new Button();
+        sBarsButton.setText("Stacked Bars Chart");
+        buttonsPane.add(sBarsButton, 2, 0);
+
         // Status bar
         HBox statusBar = new HBox();
         Label statusLabel = new Label();
@@ -65,9 +70,15 @@ public class BarChartSample extends Application {
         // Buttons actions
         vBarsButton.setOnMouseClicked(e -> {
             borderPane.setCenter(verticalBarsChart());
+            statusLabel.setText(vBarsButton.getText());
         });
         hBarsButton.setOnMouseClicked(e -> {
             borderPane.setCenter(horizontalBarsChart());
+            statusLabel.setText(hBarsButton.getText());
+        });
+        sBarsButton.setOnMouseClicked(e -> {
+            borderPane.setCenter(stackedBarsChart());
+            statusLabel.setText(sBarsButton.getText());
         });
 
         Scene scene = new Scene(borderPane, 900, 700);
@@ -149,6 +160,45 @@ public class BarChartSample extends Application {
         barChart.setAlternativeColumnFillVisible(true);
         barChart.setAlternativeRowFillVisible(false);
         return barChart;
+    }
+
+    private StackedBarChart stackedBarsChart() {
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final StackedBarChart<String, Number> stackedBarChart = new StackedBarChart<>(xAxis, yAxis);
+        stackedBarChart.setTitle("Country Summary");
+        xAxis.setLabel("Country");
+        xAxis.setCategories(FXCollections.observableArrayList(
+            Arrays.asList(austria, brazil, france, italy, usa))
+        );
+        yAxis.setLabel("Value");
+
+        final XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+        series1.setName("2003");
+        series1.getData().add(new XYChart.Data<>(austria, 25601.34));
+        series1.getData().add(new XYChart.Data<>(brazil, 20148.82));
+        series1.getData().add(new XYChart.Data<>(france, 10000));
+        series1.getData().add(new XYChart.Data<>(italy, 35407.15));
+        series1.getData().add(new XYChart.Data<>(usa, 12000));
+
+        final XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+        series2.setName("2004");
+        series2.getData().add(new XYChart.Data<>(austria, 57401.85));
+        series2.getData().add(new XYChart.Data<>(brazil, 41941.19));
+        series2.getData().add(new XYChart.Data<>(france, 45263.37));
+        series2.getData().add(new XYChart.Data<>(italy, 117320.16));
+        series2.getData().add(new XYChart.Data<>(usa, 14845.27));
+
+        final XYChart.Series<String, Number> series3 = new XYChart.Series<>();
+        series3.setName("2005");
+        series3.getData().add(new XYChart.Data<>(austria, 45000.65));
+        series3.getData().add(new XYChart.Data<>(brazil, 44835.76));
+        series3.getData().add(new XYChart.Data<>(france, 18722.18));
+        series3.getData().add(new XYChart.Data<>(italy, 17557.31));
+        series3.getData().add(new XYChart.Data<>(usa, 92633.68));
+
+        stackedBarChart.getData().addAll(series1, series2, series3);
+        return stackedBarChart;
     }
 
     public static void main(String[] args) {
